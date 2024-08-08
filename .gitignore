@@ -36,3 +36,6 @@ dep/
 lib/patched*
 build/*
 lib/shim*
+
+# Active Vim Files
+*.swp

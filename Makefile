@@ -1,12 +1,12 @@
-SOURCE_FILES := ./lib/patched_raylib.f90 ./lib/emscripten.f90 ./lib/shim_raylib50.c ./src/camera3d.f90
+SOURCE_FILES := ./lib/patched_raylib.f90 ./lib/emscripten.f90 ./lib/rlgl.f90 ./lib/shim_raylib50.c ./lib/rlgl_c.c ./src/main.f90
 LIB_FILES := ./dep/raylib-5.0_webassembly/lib/libraylib.a /app/lib/libgfortran.a
 OBJ_FILES = $(patsubst %.f90, %.o, $(patsubst %.c, %.o, $(SOURCE_FILES)))
 
 CC=emcc
 FC=emfc.sh
 
-CCFLAGS=-I./dep/raylib-5.0_webassembly/include/ -s USE_GLFW=3 --shell-file ./src/shell_minimal.html
-FCFLAGS=-fno-range-check -ffree-line-length-none
+CCFLAGS=-I./dep/raylib-5.0_webassembly/include/ -s USE_GLFW=3 --shell-file ./src/shell_minimal.html --preload-file res -O0 -gsource-map --source-map-base http://localhost:8000/
+FCFLAGS=-fno-range-check -ffree-line-length-none -O0
 WLDFLAGS=-s WASM=1
 
 OUTDIR=./build
