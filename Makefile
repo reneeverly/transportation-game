@@ -1,4 +1,4 @@
-SOURCE_FILES := ./lib/patched_raylib.f90 ./lib/emscripten.f90 ./lib/rlgl.f90 ./lib/shim_raylib50.c ./lib/rlgl_c.c ./src/main.f90
+SOURCE_FILES := ./lib/patched_raylib.f90 ./lib/emscripten.f90 ./lib/rlgl.f90 ./lib/shim_raylib50.c ./lib/rlgl_c.c ./src/gamestate.f90 ./src/main.f90
 LIB_FILES := ./dep/raylib-5.0_webassembly/lib/libraylib.a /app/lib/libgfortran.a
 OBJ_FILES = $(patsubst %.f90, %.o, $(patsubst %.c, %.o, $(SOURCE_FILES)))
 
